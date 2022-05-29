@@ -1,4 +1,4 @@
-package com.bull.examples.vavr.basic;
+package com.bull.examples.vavr.func;
 
 import io.vavr.control.Try;
 
