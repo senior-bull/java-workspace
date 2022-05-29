@@ -11,6 +11,7 @@ public class OptionExample {
             System.out.println(a);
         }
 
-
+        var opt = Option.of("CDE");
+        System.out.println("EQ: " + opt.eq(Option.of("CDE")));
     }
 }
