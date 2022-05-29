@@ -3,7 +3,7 @@ package com.bull.examples.vavr.basic;
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
 
-public class Tuples {
+public class TuplesExample {
 
     public static void main(String[] args) {
 
