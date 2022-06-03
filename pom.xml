@@ -19,6 +19,12 @@
             <artifactId>vavr</artifactId>
             <version>0.10.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.oath.cyclops</groupId>
+            <artifactId>cyclops</artifactId>
+            <version>10.4.1</version>
+        </dependency>
     </dependencies>
 
 
