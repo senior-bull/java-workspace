@@ -8,9 +8,8 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
-public class GroupTest {
+public class CustomListCollectorTest {
 
     public static final List<Person> data = List.of(
             new Person("Vito", "Bykov", 30),
@@ -20,26 +19,34 @@ public class GroupTest {
             new Person("James", "A", 35)
     );
 
-    public static final class SimpleListCollector<T> implements Collector<T, T, List<T>> {
+    public static final class SimpleListCollector<T> implements Collector<T, ArrayList<T>, List<T>> {
 
         @Override
-        public Supplier<T> supplier() {
-            return null;
+        public Supplier<ArrayList<T>> supplier() {
+            return ArrayList::new;
         }
 
         @Override
-        public BiConsumer<T, T> accumulator() {
-            return null;
+        public BiConsumer<ArrayList<T>, T> accumulator() {
+            return (list, x) -> list.add(x);
         }
 
         @Override
-        public BinaryOperator<T> combiner() {
-            return null;
+        public BinaryOperator<ArrayList<T>> combiner() {
+            return (x, y) -> {
+                if (x.size() > y.size()) {
+                    x.addAll(y);
+                    return x;
+                } else {
+                    y.addAll(x);
+                    return y;
+                }
+            };
         }
 
         @Override
-        public Function<T, List<T>> finisher() {
-            return null;
+        public Function<ArrayList<T>, List<T>> finisher() {
+            return list -> list;
         }
 
         @Override
@@ -49,6 +56,8 @@ public class GroupTest {
     }
 
     public static void main(String[] args) {
-        data.stream().collect();
+        List<Person> toList = data.stream().collect(new SimpleListCollector<>());
+
+        System.out.println(toList);
     }
 }
