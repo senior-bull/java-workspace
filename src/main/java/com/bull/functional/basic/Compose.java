@@ -6,12 +6,7 @@ public class Compose {
 
     static Function<Integer, Integer> compose(Function<Integer, Integer> f1,
                                               Function<Integer, Integer> f2) {
-        return new Function<Integer, Integer>() {
-            @Override
-            public Integer apply(Integer arg) {
-                return f1.apply(f2.apply(arg));
-            }
-        };
+        return arg -> f1.apply(f2.apply(arg));
     }
 
     public static void main(String[] args) {
