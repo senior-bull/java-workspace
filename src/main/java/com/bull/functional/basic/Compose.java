@@ -14,5 +14,15 @@ public class Compose {
         System.out.println(
             compose(x -> x * x, x -> x + 2).apply(5)
         );
+
+        // This special kind of function, taking functions as its arguments
+        // and returning functions, is called a higher-order function (HOF)
+        Function<Function<Integer, Integer>,
+            Function<Function<Integer, Integer>,
+                Function<Integer, Integer>>> compose =
+            x -> y -> z -> x.apply(y.apply(z));
+
+        Integer val = compose.apply(x -> x * x).apply(x -> x + 2).apply(5);
+        System.out.println(val);
     }
 }
