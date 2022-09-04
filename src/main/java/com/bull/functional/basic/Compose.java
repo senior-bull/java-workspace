@@ -9,6 +9,10 @@ public class Compose {
         return arg -> f1.apply(f2.apply(arg));
     }
 
+    static <T, U, V> Function<Function<U, V>, Function<Function<T, U>, Function<T, V>>> higherCompose() {
+        return (Function<U, V> f) -> (Function<T, U > g) -> (T x) -> f.apply(g.apply(x));
+    }
+
     public static void main(String[] args) {
 
         System.out.println(
