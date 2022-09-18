@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public class CollectionUtilities {
 
@@ -32,6 +33,24 @@ public class CollectionUtilities {
         List<T> ts = copy(list);
         ts.add(t);
         return Collections.unmodifiableList(ts);
+    }
+
+    public static Integer fold(List<Integer> is, Integer identity,
+                               Function<Integer, Function<Integer, Integer>> f) {
+        int result = identity;
+        for (Integer i : is) {
+            result = f.apply(result).apply(i);
+        }
+        return result;
+    }
+
+    public static <T, U> U foldLeft(List<T> ts, U identity,
+                                    Function<U, Function<T, U>> f) {
+        U result = identity;
+        for (T t : ts) {
+            result = f.apply(result).apply(t);
+        }
+        return result;
     }
 
     public static void main(String[] args) {
