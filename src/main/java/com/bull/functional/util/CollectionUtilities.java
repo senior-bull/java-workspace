@@ -33,4 +33,11 @@ public class CollectionUtilities {
         ts.add(t);
         return Collections.unmodifiableList(ts);
     }
+
+    public static void main(String[] args) {
+
+        List<String> x = list("a", "b", "c");
+        List<String> withY = append(x, "y");
+        System.out.println(withY);
+    }
 }
