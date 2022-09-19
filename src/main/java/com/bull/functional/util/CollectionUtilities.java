@@ -85,10 +85,19 @@ public class CollectionUtilities {
             : f.apply(head(ts)).apply(foldRight(tail(ts), identity, f));
     }
 
+    public static <T> List<T> prepend(T t, List<T> list) {
+        return foldLeft(list, list(t), a -> b -> append(a, b));
+    }
+
+    // Functional reverse
+    public static <T> List<T> reverse(List<T> list) {
+        return foldLeft(list, list(), x -> y -> prepend(y, x));
+    }
+
     public static void main(String[] args) {
 
         List<String> x = list("a", "b", "c");
-        List<String> withY = append(x, "y");
-        System.out.println(withY);
+
+        System.out.println(reverse(x));
     }
 }
