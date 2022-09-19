@@ -8,8 +8,8 @@ Key ideas:
 * Throwing an exception is a side effect
 * In other words, the output of a functional program
   must depend only on its argument
+* if-else and for-loops are not prefereable
 
 #### Basics
 
-This special kind of function, taking functions as its arguments and returning functions, is called a *higher-order function (HOF)*
-
+* This special kind of function, taking functions as its arguments and returning functions, is called a *higher-order function (HOF)*
