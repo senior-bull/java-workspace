@@ -12,6 +12,22 @@ public class CollectionUtilities {
         return Collections.emptyList();
     }
 
+    public static <T> T head(List<T> list) {
+        if (list.size() == 0) {
+            throw new IllegalStateException("head of empty list");
+        }
+        return list.get(0);
+    }
+
+    public static <T> List<T> tail(List<T> list) {
+        if (list.size() == 0) {
+            throw new IllegalStateException("tail of empty list");
+        }
+        List<T> workList = copy(list);
+        workList.remove(0);
+        return Collections.unmodifiableList(workList);
+    }
+
     public static <T> List<T > list(T t) {
         return Collections.singletonList(t);
     }
@@ -51,6 +67,22 @@ public class CollectionUtilities {
             result = f.apply(result).apply(t);
         }
         return result;
+    }
+
+    public static <T, U> U foldRight(List<T> ts, U identity,
+                                     Function<T, Function<U, U>> f) {
+        U result = identity;
+        for (int i = ts.size(); i > 0; i--) {
+            result = f.apply(ts.get(i - 1)).apply(result);
+        }
+        return result;
+    }
+
+    public static <T, U> U foldRightRecursive(List<T> ts, U identity,
+                                     Function<T, Function<U, U>> f) {
+        return ts.isEmpty()
+            ? identity
+            : f.apply(head(ts)).apply(foldRight(tail(ts), identity, f));
     }
 
     public static void main(String[] args) {
