@@ -91,6 +91,11 @@ public class CollectionUtilities {
 
     // Functional reverse
     public static <T> List<T> reverse(List<T> list) {
+        // (x y z)
+        // fold #1: () x y z
+        // fold #2: (y x) z
+        // fold #3: (z (y x))
+
         return foldLeft(list, list(), x -> y -> prepend(y, x));
     }
 
