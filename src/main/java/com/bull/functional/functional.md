@@ -13,3 +13,6 @@ Key ideas:
 #### Basics
 
 * This special kind of function, taking functions as its arguments and returning functions, is called a *higher-order function (HOF)*
+* Part of the beauty of functional programming is in finding every small element that
+  can be abstracted and reused. After you get used to this way of thinking, you’ll start
+  seeing patterns everywhere and you’ll want to abstract them.

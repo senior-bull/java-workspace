@@ -99,6 +99,14 @@ public class CollectionUtilities {
         return foldLeft(list, list(), x -> y -> prepend(y, x));
     }
 
+    public static <T, U> List<U> mapViaFold(List<T> list, Function<T, U> function) {
+        return foldLeft(
+            list,
+            list(),
+            x -> y -> append(x, function.apply(y))
+        );
+    }
+
     public static void main(String[] args) {
 
         List<String> x = list("a", "b", "c");
