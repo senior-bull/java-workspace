@@ -114,6 +114,18 @@ public class CollectionUtilities {
         for (T t : ts) e.apply(t);
     }
 
+    public static <T> List<T> unfold(T seed,
+                                     Function<T, T> f,
+                                     Function<T, Boolean> p) {
+        List<T> result = new ArrayList<>();
+        T temp = seed;
+        while (p.apply(temp)) {
+            result = append(result, temp);
+            temp = f.apply(temp);
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 
         List<String> x = list("a", "b", "c");
