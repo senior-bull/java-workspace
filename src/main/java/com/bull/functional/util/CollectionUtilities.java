@@ -2,9 +2,12 @@ package com.bull.functional.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+
+import com.bull.functional.examples.Effect;
 
 public class CollectionUtilities {
 
@@ -105,6 +108,10 @@ public class CollectionUtilities {
             list(),
             x -> y -> append(x, function.apply(y))
         );
+    }
+
+    public static <T> void forEach(Collection<T> ts, Effect<T> e) {
+        for (T t : ts) e.apply(t);
     }
 
     public static void main(String[] args) {
