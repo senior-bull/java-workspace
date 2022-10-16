@@ -9,10 +9,6 @@ public class TailCallExample {
     }
 
     public static void main(String[] args) {
-        TailCall<Integer> tailCall = add(3, 100000000);
-        while(tailCall.isSuspend()) {
-            tailCall = tailCall.resume();
-        }
-        System.out.println(tailCall.eval());
+        System.out.println(add(3, 100000000).eval());
     }
 }
