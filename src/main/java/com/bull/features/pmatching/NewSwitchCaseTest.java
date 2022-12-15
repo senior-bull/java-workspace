@@ -1,6 +1,7 @@
 package com.bull.features.pmatching;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class NewSwitchCaseTest {
 
@@ -10,6 +11,8 @@ public class NewSwitchCaseTest {
             case String s -> System.out.println(s);
             case Integer n -> System.out.println(n);
             case int[] ia -> System.out.println(Arrays.toString(ia));
+            case List<?> is when is.size() > 3 -> System.out.println(is.subList(0, 3) + "...");
+            case List<?> is -> System.out.println(is);
             default -> o.toString();
         };
     }
@@ -34,7 +37,7 @@ public class NewSwitchCaseTest {
         System.out.println(smartToString(new int[] {1, 2, 3}));
         System.out.println(smartToString(new X()));
 
-        smartPrint("ABCSADASD");
-        smartPrint(new int[]{2, 3, 5});
+        smartPrint(Arrays.asList("A", "B", "C", "D", "E"));
+        smartPrint(Arrays.asList("A", "B", "C"));
     }
 }
