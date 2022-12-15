@@ -1,4 +1,3 @@
-/*
 package com.bull.features.pmatching;
 
 // https://www.infoq.com/articles/data-oriented-programming-java/
@@ -21,8 +20,9 @@ public class OptionalTest {
     public static void main(String[] args) {
         var result = find(5);
         var s = switch (result) {
-            case Opt.Some(var value) -> 5;
-            case Opt.None() -> 6;
+            case Opt.Some<String> z -> 5;
+            case Opt.None $ -> 6;
         };
+        System.out.println(s);
     }
-}*/
+}
