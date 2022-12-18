@@ -3,14 +3,16 @@ package com.bull.features.pmatching;
 import java.util.Arrays;
 import java.util.List;
 
-public class NewSwitchCaseTest {
+public class NewSwitchCaseWithPMatching {
 
     static void smartPrint(Object o) {
         switch (o) {
             case null -> System.out.println("NULL");
             case String s -> System.out.println(s);
+            case Integer n when n >= 5 -> System.out.println(n);
             case Integer n -> System.out.println(n);
-            case int[] ia -> System.out.println(Arrays.toString(ia));
+            case int[] ia when ia.length != 0 && ia.length < 500 -> System.out.println(Arrays.toString(ia));
+            case int[] ia -> System.out.println("long array: " + Arrays.toString(ia));
             case List<?> is when is.size() > 3 -> System.out.println(is.subList(0, 3) + "...");
             case List<?> is -> System.out.println(is);
             default -> o.toString();
