@@ -1,4 +1,4 @@
-package com.bull.features.instancof;
+package com.bull.features.records;
 
 public class RecordsInstanceof {
 
