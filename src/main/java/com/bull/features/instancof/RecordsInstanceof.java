@@ -8,7 +8,7 @@ public class RecordsInstanceof {
 
     public static void main(String[] args) {
         Object obj = new Point(2, 5);
-        if (obj instanceof Point(int x, int y) p) {
+        if (obj instanceof Point(int x, int y)) {
             System.out.println(x);
             System.out.println(y);
         }
