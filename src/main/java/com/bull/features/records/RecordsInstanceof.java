@@ -16,6 +16,7 @@ public class RecordsInstanceof {
         Object obj2 = new Circle(new Point(5, 6), 2);
         if (obj2 instanceof Circle(Point(int x, int y), int rad)) {
             System.out.println(rad);
+            System.out.println(x);
         }
     }
 }
